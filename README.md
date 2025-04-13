@@ -59,13 +59,5 @@ The **Employee Payroll Management System** is a Java-based console application d
 
 ---
 
-## 📞 Contact
-For questions or feedback, please contact:  
-📧 [your-email@example.com]
-
----
-
-**Note:** This project was developed as part of an educational assignment.
-
 ### Presentation
 https://www.canva.com/design/DAGkiM9_M-E/T2JkRH0NQbhc4tIjmEs7mA/edit
