@@ -43,7 +43,7 @@ The **Employee Payroll Management System** is a Java-based console application d
 
 ## 🛠️ Technologies Used
 
-- Java SE 17+
+- Java OpenJDK-24
 - Maven
 - Gson (for JSON parsing if used)
 - Basic file I/O for persistence
