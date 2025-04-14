@@ -50,6 +50,13 @@ The **Employee Payroll Management System** is a Java-based console application d
 
 ---
 
+## 📷 Screenshots
+
+![image](https://github.com/user-attachments/assets/f50b870e-bcd6-4931-9b8b-ac913bdf4eb8)
+
+
+---
+
 ## 🚀 Future Improvements
 
 - GUI implementation (JavaFX/Swing)
