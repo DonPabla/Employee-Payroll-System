@@ -4,6 +4,7 @@ import model.Employee;
 import service.EmployeeService;
 import util.InputValidator;
 import util.Logger;
+import util.FileHandler;
 
 import java.util.Scanner;
 
@@ -25,7 +26,14 @@ public class Menu {
             System.out.println("5. Export to CSV");
             System.out.println("6. Exit");
             System.out.print("Choose option: ");
-            int choice = Integer.parseInt(scanner.nextLine());
+
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
+                continue;
+            }
 
             switch (choice) {
                 case 1 -> addEmployee();
@@ -37,7 +45,7 @@ public class Menu {
                     System.out.println("Exiting...");
                     return;
                 }
-                default -> System.out.println("Invalid option!");
+                default -> System.out.println("Invalid option! Please choose between 1 and 6.");
             }
         }
     }
@@ -49,7 +57,10 @@ public class Menu {
 
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
-        if (!InputValidator.isValidEmail(email)) return;
+        if (!InputValidator.isValidEmail(email)) {
+            System.out.println("Invalid email format.");
+            return;
+        }
 
         System.out.print("Enter salary: ");
         double salary;
@@ -80,7 +91,14 @@ public class Menu {
 
     private void updateEmployee() {
         System.out.print("Enter ID to update: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        try {
+            id = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID. Please enter a valid number.");
+            return;
+        }
+
         Employee old = employeeService.findById(id);
         if (old == null) {
             System.out.println("Employee not found.");
@@ -93,7 +111,10 @@ public class Menu {
 
         System.out.print("Enter new email: ");
         String email = scanner.nextLine();
-        if (!InputValidator.isValidEmail(email)) return;
+        if (!InputValidator.isValidEmail(email)) {
+            System.out.println("Invalid email format.");
+            return;
+        }
 
         System.out.print("Enter new salary: ");
         double salary;
@@ -110,7 +131,14 @@ public class Menu {
 
     private void deleteEmployee() {
         System.out.print("Enter ID to delete: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        try {
+            id = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID. Please enter a valid number.");
+            return;
+        }
+
         employeeService.deleteEmployee(id);
         Logger.log("Deleted employee ID: " + id);
     }
@@ -120,7 +148,7 @@ public class Menu {
         if (employees.isEmpty()) {
             System.out.println("No employees to export.");
         } else {
-            new util.FileHandler().exportToCSV(employees);
+            new FileHandler().exportToCSV(employees);
             Logger.log("Exported to CSV");
         }
     }
